@@ -11,3 +11,20 @@
 }
 
 */
+/* app/assets/stylesheets/application.tailwind.css */
+
+@layer base {
+		@font-face {
+				font-family: 'Filosofia';
+				src: url('/Filosofia.ttf') format('ttf');
+				font-weight: normal;
+				font-style: normal;
+		}
+  
+		@font-face {
+				font-family: 'Avenir';
+				src: url('/avenir.otf') format('otf');
+				font-weight: bold;
+				font-style: normal;
+		}
+}

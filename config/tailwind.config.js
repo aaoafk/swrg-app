@@ -10,8 +10,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        serif: ['Filosofia', 'Minion Pro', 'serif'],
+        sans: ['Avenir', 'Foundry Sans', 'sans-serif'],
       },
+      colors: {
+        garnet: '#631919',
+      }
     },
   },
   plugins: [

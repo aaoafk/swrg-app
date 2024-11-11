@@ -1,0 +1,23 @@
+<%# app/views/user_mailer/otp_email.html.erb %>
+<div style="max-width: 600px; margin: 0 auto; font-family: sans-serif;">
+  <h1 style="color: #631919;">Swarthmore Reading Group</h1>
+  
+  <p>Here's your verification code:</p>
+  
+  <div style="background: #f3f4f6; padding: 20px; text-align: center; margin: 20px 0;">
+    <span style="font-size: 24px; letter-spacing: 0.5em;"><%= @code %></span>
+  </div>
+  
+  <p>This code will expire in 10 minutes.</p>
+  
+  <p>If you didn't request this code, you can safely ignore this email.</p>
+</div>
+
+<%# app/views/user_mailer/otp_email.text.erb %>
+Swarthmore Reading Group
+
+Your verification code is: <%= @code %>
+
+This code will expire in 10 minutes.
+
+If you didn't request this code, you can safely ignore this email.

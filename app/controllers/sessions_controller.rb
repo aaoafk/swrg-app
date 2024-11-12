@@ -1,6 +1,6 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
-  allow_unauthenticated_access only: [:new, :create, :validate, :verify]
+  allow_unauthenticated_access only: [ :new, :create, :validate, :verify ]
 
   def new
     redirect_to app_root_path if authenticated?
@@ -11,10 +11,10 @@ class SessionsController < ApplicationController
     if valid_email?(email)
       otp = generate_otp
       store_otp_for_email(email, otp)
-      
+
       # Send email with OTP
       UserMailer.otp_email(email, otp).deliver_later
-      
+
       session[:email] = email
       redirect_to validate_session_path
     else
@@ -30,12 +30,12 @@ class SessionsController < ApplicationController
   def verify
     email = session[:email]
     submitted_code = params[:code]
-    
+
     if valid_otp?(email, submitted_code)
       user = User.find_or_create_by(email: email) do |u|
         u.role = :reader
-        u.first_name = email.split('@').first
-        u.last_name = 'Unknown'
+        u.first_name = email.split("@").first
+        u.last_name = "Unknown"
       end
 
       sign_in(user)
@@ -65,7 +65,7 @@ class SessionsController < ApplicationController
   def store_otp_for_email(email, otp)
     # Expire any existing OTP codes for this email
     OtpCode.where(email: email).destroy_all
-    
+
     # Create new OTP code that expires in 10 minutes
     OtpCode.create!(
       email: email,
@@ -76,16 +76,16 @@ class SessionsController < ApplicationController
 
   def valid_otp?(email, submitted_code)
     otp_record = OtpCode.find_by(email: email)
-    
+
     return false unless otp_record
     return false if otp_record.expires_at < Time.current
-    
+
     # Validate the code
     is_valid = otp_record.code == submitted_code
-    
+
     # Delete the OTP after validation attempt (one-time use)
     otp_record.destroy
-    
+
     is_valid
   end
 end

@@ -15,9 +15,9 @@ Rails.application.routes.draw do
       get :home
     end
   end
-  root 'pages#home'
+  root "pages#home"
 
-  resource :session, only: [:new, :create] do
+  resource :session, only: [ :new, :create ] do
     get :validate
     post :verify
   end
@@ -25,11 +25,11 @@ Rails.application.routes.draw do
   # Application pages
   # All authenticated routes under /app namespace
   namespace :app do
-    root to: 'dashboard#show' # This becomes our post-login landing page
-    
+    root to: "dashboard#show" # This becomes our post-login landing page
+
     # Other app routes can go here
-    resources :groups, only: [:index, :show]
-    resources :meetings, only: [:index, :show]
-    resource :profile, only: [:show, :edit, :update]
+    resources :groups, only: [ :index, :show ]
+    resources :meetings, only: [ :index, :show ]
+    resource :profile, only: [ :show, :edit, :update ]
   end
 end

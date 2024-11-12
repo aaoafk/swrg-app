@@ -3,7 +3,7 @@ class OtpCode < ApplicationRecord
   validates :email, presence: true
   validates :code, presence: true, length: { is: 6 }
   validates :expires_at, presence: true
-  
+
   validate :expires_at_cannot_be_in_past, on: :create
 
   private

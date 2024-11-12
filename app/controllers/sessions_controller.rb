@@ -1,6 +1,9 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
+  allow_unauthenticated_access only: [:new, :create, :validate, :verify]
+
   def new
+    redirect_to app_root_path if authenticated?
   end
 
   def create
@@ -21,6 +24,7 @@ class SessionsController < ApplicationController
   end
 
   def validate
+    redirect_to new_session_path unless session[:email]
   end
 
   def verify
@@ -28,13 +32,24 @@ class SessionsController < ApplicationController
     submitted_code = params[:code]
     
     if valid_otp?(email, submitted_code)
-      user = User.find_or_create_by(email: email)
+      user = User.find_or_create_by(email: email) do |u|
+        u.role = :reader
+        u.first_name = email.split('@').first
+        u.last_name = 'Unknown'
+      end
+
       sign_in(user)
-      redirect_to app_path
+      session.delete(:email)
+      redirect_to after_authentication_url
     else
       flash.now[:error] = "Invalid code"
       render :validate
     end
+  end
+
+  def destroy
+    sign_out
+    redirect_to root_path, notice: "You have been signed out"
   end
 
   private

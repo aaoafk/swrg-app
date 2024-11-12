@@ -21,4 +21,15 @@ Rails.application.routes.draw do
     get :validate
     post :verify
   end
+
+  # Application pages
+  # All authenticated routes under /app namespace
+  namespace :app do
+    root to: 'dashboard#show' # This becomes our post-login landing page
+    
+    # Other app routes can go here
+    resources :groups, only: [:index, :show]
+    resources :meetings, only: [:index, :show]
+    resource :profile, only: [:show, :edit, :update]
+  end
 end

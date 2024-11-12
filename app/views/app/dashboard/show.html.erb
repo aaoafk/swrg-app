@@ -1,0 +1,17 @@
+<%# app/views/app/dashboard/show.html.erb %>
+<div class="max-w-7xl mx-auto p-6">
+  <h1 class="font-serif text-3xl mb-6">Welcome to Swarthmore Reading Group</h1>
+  
+  <div class="bg-white shadow rounded-lg p-6">
+    <h2 class="font-serif text-xl mb-4">Your Groups</h2>
+    <% if current_user.groups.any? %>
+      <% current_user.groups.each do |group| %>
+        <div class="border-b py-4">
+          <h3 class="font-sans text-lg"><%= group.name %></h3>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-gray-500">You haven't joined any groups yet.</p>
+    <% end %>
+  </div>
+</div>

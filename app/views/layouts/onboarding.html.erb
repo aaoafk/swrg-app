@@ -1,0 +1,42 @@
+<%# app/views/layouts/onboarding.html.erb %>
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <title>Onboarding - Swarthmore Reading Group</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="h-full bg-gray-50">
+    <div class="min-h-full">
+      <nav class="bg-[#631919]">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <div class="flex-shrink-0">
+              <h1 class="text-white font-serif">Welcome to Swarthmore Reading Group</h1>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="py-10">
+        <header>
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-serif">Let's get you started</h2>
+          </div>
+        </header>
+        <main>
+          <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+
+

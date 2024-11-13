@@ -40,12 +40,18 @@ module Authentication
     end
 
     def request_authentication
-      session[:return_to_after_authenticating] = request.url
+      session[:return_to_after_authenticating] = if current_user&.onboarded?
+        request.url
+      else
+        app_onboarding_root_path
+      end
+      
       redirect_to new_session_path
     end
 
+    # TODO: session.delete(:return_to_after_authenticating) is null at this point
     def after_authentication_url
-      session.delete(:return_to_after_authenticating) || app_root_path
+      session.delete(:return_to_after_authenticating) || app_onboarding_root_path || app_root_path
     end
 
     def sign_in(user)

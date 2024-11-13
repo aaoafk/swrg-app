@@ -43,6 +43,7 @@ Rails.application.routes.draw do
         collection do
           get :complete_profile
           get :select_group
+          patch :skip  # Add this route
         end
       end
     end

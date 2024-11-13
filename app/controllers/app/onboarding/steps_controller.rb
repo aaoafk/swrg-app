@@ -3,10 +3,10 @@ class App::Onboarding::StepsController < App::Onboarding::BaseController
     redirect_to complete_profile_app_onboarding_steps_path
   end
 
-  def profile
+  def complete_profile
   end
 
-  def group_selection
+  def select_group
   end
 
   def update
@@ -23,6 +23,11 @@ class App::Onboarding::StepsController < App::Onboarding::BaseController
     else
       render params[:current_step]
     end
+  end
+
+  def skip
+    current_user.update!(onboarded: true)
+    redirect_to app_root_path, notice: "You can always update your preferences later"
   end
 
   private

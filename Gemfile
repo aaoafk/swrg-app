@@ -6,6 +6,9 @@ ruby file: ".ruby-version"
 gem "rails", github: "rails/rails", branch: "8-0-stable"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
+
+# For sass stuff
+gem "dartsass-rails"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -37,6 +40,8 @@ gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
+
+gem 'activeadmin'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

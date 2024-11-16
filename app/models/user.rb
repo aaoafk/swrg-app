@@ -8,4 +8,14 @@ class User < ApplicationRecord
   validates :email, presence: true,
                    uniqueness: true,
                    format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  # KIM this is required for ActiveAdmin
+  def display_name
+    "#{first_name} #{last_name}"
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "email", "first_name", "id", "id_value", "last_name", "onboarded", "role", "updated_at"]
+  end
+
 end

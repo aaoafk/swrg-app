@@ -232,7 +232,8 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
-
+  config.register_stylesheet 'vendor/active_admin', data: { "turbo-track": "reload" }
+  config.register_javascript 'vendor/active_admin'
   # == CSV options
   #
   # Set the CSV builder separator

@@ -1,4 +1,4 @@
 # config/initializers/dartsass.rb
 Rails.application.config.dartsass.builds = {
-  "active_admin.scss" => "active_admin.css"
+  "#{Rails.root}/vendor/assets/stylesheets/active_admin.scss" => "#{Rails.root}/vendor/assets/builds/active_admin.css"
 }

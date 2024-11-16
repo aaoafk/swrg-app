@@ -48,3 +48,38 @@ puts "Created #{Group.count} groups:"
 Group.all.each do |group|
   puts "- #{group.name} (max size: #{group.max_size == -1 ? 'unlimited' : group.max_size})"
 end
+
+# Create meetings for each group
+puts "Creating meetings..."
+Group.all.each do |group|
+  # Create 3 past meetings
+  3.times do |i|
+    meeting = group.meetings.create!(
+      date: (i + 1).weeks.ago
+    )
+    
+    meeting.create_location!(
+      address: Faker::Address.full_address
+    )
+  end
+
+  # Create 3 upcoming meetings
+  3.times do |i|
+    meeting = group.meetings.create!(
+      date: (i + 1).weeks.from_now
+    )
+    
+    meeting.create_location!(
+      address: Faker::Address.full_address
+    )
+  end
+end
+
+puts "Created #{Group.count} groups with #{Meeting.count} meetings"
+Group.all.each do |group|
+  puts "- #{group.name}"
+  puts "  Upcoming meetings: #{group.upcoming_meetings.count}"
+  group.upcoming_meetings.each do |meeting|
+    puts "    - #{meeting.date.strftime("%B %d, %Y at %I:%M %p")} at #{meeting.location.address}"
+  end
+end

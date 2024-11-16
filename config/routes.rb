@@ -27,8 +27,6 @@ Rails.application.routes.draw do
   # Application pages
   # All authenticated routes under /app namespace
   namespace :app do
-    get "onboarding/show"
-    get "onboarding/update"
     root to: "dashboard#show" # This becomes our post-login landing page
 
     # Other app routes can go here
@@ -43,7 +41,7 @@ Rails.application.routes.draw do
         collection do
           get :complete_profile
           get :select_group
-          patch :skip  # Add this route
+          patch :skip # Skip onboarding
         end
       end
     end

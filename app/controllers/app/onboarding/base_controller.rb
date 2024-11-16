@@ -1,6 +1,6 @@
 class App::Onboarding::BaseController < App::BaseController
   before_action :require_unboarded_user
-  layout 'onboarding'
+  layout "onboarding"
 
   private
 

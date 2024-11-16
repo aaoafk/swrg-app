@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   enum :group_type, { basic: 0, reading_group: 1 }
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "group_type", "id", "id_value", "max_size", "name", "updated_at"]
+    [ "created_at", "group_type", "id", "id_value", "max_size", "name", "updated_at" ]
   end
 
   def full?
@@ -16,6 +16,6 @@ class Group < ApplicationRecord
 
 
   def upcoming_meetings
-    meetings.where('date > ?', Time.current).order(date: :asc)
+    meetings.where("date > ?", Time.current).order(date: :asc)
   end
 end

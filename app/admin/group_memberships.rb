@@ -1,5 +1,4 @@
 ActiveAdmin.register GroupMembership do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -27,5 +26,5 @@ ActiveAdmin.register GroupMembership do
 
   filter :user
   filter :group
-  filter :created_at 
+  filter :created_at
 end

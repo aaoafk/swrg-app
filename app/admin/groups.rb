@@ -1,5 +1,4 @@
 ActiveAdmin.register Group do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,7 +13,7 @@ ActiveAdmin.register Group do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
- # app/admin/groups.rb
+  # app/admin/groups.rb
   permit_params :name, :group_type, :max_size
 
   index do

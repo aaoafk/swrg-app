@@ -57,7 +57,7 @@ Group.all.each do |group|
     meeting = group.meetings.create!(
       date: (i + 1).weeks.ago
     )
-    
+
     meeting.create_location!(
       address: Faker::Address.full_address
     )
@@ -68,7 +68,7 @@ Group.all.each do |group|
     meeting = group.meetings.create!(
       date: (i + 1).weeks.from_now
     )
-    
+
     meeting.create_location!(
       address: Faker::Address.full_address
     )

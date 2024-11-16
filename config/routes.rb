@@ -36,8 +36,8 @@ Rails.application.routes.draw do
 
     # Onboarding routes
     namespace :onboarding do
-      root to: 'steps#show'
-      resource :steps, only: [:show, :update] do
+      root to: "steps#show"
+      resource :steps, only: [ :show, :update ] do
         collection do
           get :complete_profile
           get :select_group

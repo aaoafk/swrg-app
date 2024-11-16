@@ -174,7 +174,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
+  config.filter_attributes = [ :encrypted_password, :password, :password_confirmation ]
 
   # == Localize Date/Time Format
   #
@@ -357,5 +357,5 @@ ActiveAdmin.setup do |config|
   # config.logout_link_method = :delete
 
   # Optional: customize the display name method
-  config.display_name_methods = [:display_name, :full_name, :name, :first_name, :email]
+  config.display_name_methods = [ :display_name, :full_name, :name, :first_name, :email ]
 end

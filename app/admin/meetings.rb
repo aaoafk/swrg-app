@@ -1,5 +1,4 @@
 ActiveAdmin.register Meeting do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,7 +13,7 @@ ActiveAdmin.register Meeting do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :date, :group_id, location_attributes: [:id, :address]
+  permit_params :date, :group_id, location_attributes: [ :id, :address ]
 
   index do
     selectable_column
@@ -39,5 +38,5 @@ ActiveAdmin.register Meeting do
   end
 
   filter :group
-  filter :date 
+  filter :date
 end

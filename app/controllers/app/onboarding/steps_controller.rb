@@ -91,8 +91,8 @@
 # end
 
 class App::Onboarding::StepsController < App::Onboarding::BaseController
-  require 'ostruct'
-  SAFE_PATHS = %w(complete_profile select_group).freeze
+  require "ostruct"
+  SAFE_PATHS = %w[complete_profile select_group].freeze
 
   def show
     redirect_to complete_profile_app_onboarding_steps_path
@@ -125,9 +125,9 @@ class App::Onboarding::StepsController < App::Onboarding::BaseController
 
   def process_step(step)
     case step
-    when 'complete_profile'
+    when "complete_profile"
       process_profile_update
-    when 'select_group'
+    when "select_group"
       process_group_selection
     else
       OpenStruct.new(success?: false, error: "Invalid step")
@@ -137,12 +137,12 @@ class App::Onboarding::StepsController < App::Onboarding::BaseController
   def process_profile_update
     if current_user.update(profile_params)
       OpenStruct.new(
-        success?: true, 
+        success?: true,
         next_path: select_group_app_onboarding_steps_path
       )
     else
       OpenStruct.new(
-        success?: false, 
+        success?: false,
         error: current_user.errors.full_messages.to_sentence
       )
     end
@@ -150,7 +150,7 @@ class App::Onboarding::StepsController < App::Onboarding::BaseController
 
   def process_group_selection
     return OpenStruct.new(
-      success?: false, 
+      success?: false,
       error: "No group selected"
     ) unless params[:group_id].present?
 
@@ -164,7 +164,7 @@ class App::Onboarding::StepsController < App::Onboarding::BaseController
       OpenStruct.new(success?: true, next_path: app_root_url)
     else
       OpenStruct.new(
-        success?: false, 
+        success?: false,
         error: membership.errors.full_messages.to_sentence
       )
     end

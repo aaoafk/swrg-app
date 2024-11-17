@@ -17,12 +17,12 @@
 
     <%= f.submit "Verify", 
         class: "w-full bg-[#631919] text-white px-6 py-3 rounded hover:opacity-90 transition-opacity font-sans" %>
-    
-    <div class="text-center mt-4">
-				<%= button_to "Resend code", 
-				session_path,
-				method: :post,
-				class: "text-[#631919] hover:underline font-sans inline-block bg-transparent border-0 p-0 cursor-pointer" %>
-    </div>
   <% end %>
+    
+  <div class="text-center mt-4">
+    <%= form_with url: session_path, class: "inline-block" do |f| %>
+      <%= f.submit "Resend code",
+          class: "text-[#631919] hover:underline font-sans bg-transparent border-0 p-0 cursor-pointer" %>
+    <% end %>
+  </div>
 </div>

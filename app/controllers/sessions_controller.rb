@@ -48,7 +48,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out
+    if current_user
+      current_user.sessions.destroy_all # Clean up all sessions
+      cookies.delete(:session_token) # Don't forget to clear the session cookie
+      Current.reset # Reset Current attributes
+    end
     redirect_to root_path, notice: "You have been signed out"
   end
 

@@ -120,7 +120,7 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_admin_user_session_path
+  # config.logout_link_path = :destroy_admin_user_session_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
@@ -232,8 +232,8 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
-  config.register_stylesheet 'vendor/active_admin', data: { "turbo-track": "reload" }
-  config.register_javascript 'vendor/active_admin'
+  # config.register_stylesheet 'vendor/active_admin', data: { "turbo-track": "reload" }
+  # config.register_javascript 'vendor/active_admin'
   # == CSV options
   #
   # Set the CSV builder separator
@@ -355,7 +355,6 @@ ActiveAdmin.setup do |config|
   config.authentication_method = :authenticate_admin_user!
   config.current_user_method = :current_user
   config.logout_link_path = nil
-  # config.logout_link_method = :delete
 
   # Optional: customize the display name method
   config.display_name_methods = [ :display_name, :full_name, :name, :first_name, :email ]

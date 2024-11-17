@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   root "pages#home"
 
-  resource :session, only: [ :new, :create ] do
+  resource :session, only: [ :new, :create, :destroy ] do
     get :validate
     post :verify
   end

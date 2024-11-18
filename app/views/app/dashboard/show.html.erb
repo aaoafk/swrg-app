@@ -13,7 +13,7 @@
 												</span>
 												<%= button_to session_path, 
 												method: :delete,
-																		class: "px-4 py-2 text-white border-2 border-white/70 rounded-md hover:bg-white/20 transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#631919]",
+														 class: "px-4 py-2 text-white border-2 border-white/70 rounded-md hover:bg-white/20 transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#631919]",
 												 aria: {
 														 label: "Sign out of your account",
 														 haspopup: "true",
@@ -31,69 +31,76 @@
 						</div>
 				</div>
 		</div>
-  
-  <div class="grid gap-6">
-    <%# Groups Section %>
-    <div class="bg-white shadow rounded-lg p-6">
-      <h2 class="font-serif text-xl mb-4">Your Groups</h2>
-      <% if current_user.groups.any? %>
-        <% current_user.groups.each do |group| %>
-          <div class="border-b py-4 space-y-3">
-            <h3 class="font-sans text-lg"><%= group.name %></h3>
-            
-            <%# Upcoming Meetings %>
-            <% if group.upcoming_meetings.any? %>
-              <div class="pl-4 border-l-4 border-[#631919]">
-                <h4 class="text-sm font-medium text-gray-500 mb-2">Upcoming Meetings</h4>
-                <div class="space-y-2">
-                  <% group.upcoming_meetings.each do |meeting| %>
-                    <div class="flex items-center justify-between">
-                      <div class="flex items-center space-x-3">
-                        <div class="text-sm">
-                          <%= format_meeting_date(meeting.date) %>
-                          <span class="text-gray-500">
-                            at <%= format_meeting_time(meeting.date) %>
-                          </span>
-                        </div>
-                      </div>
-                      <% if meeting.location %>
-                        <div class="text-sm text-gray-500">
-                          <%= meeting.location.address %>
-                        </div>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            <% else %>
-              <p class="text-sm text-gray-500">No upcoming meetings scheduled</p>
-            <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        <p class="text-gray-500">You haven't joined any groups yet.</p>
-      <% end %>
-    </div>
+		<%# app/views/app/dashboard/show.html.erb %>
+		<% if announcement = Announcement.current.last %>
+				<div class="bg-blue-50 p-4 rounded-lg mb-6">
+						<h3 class="font-serif text-lg mb-2"><%= announcement.title %></h3>
+						<div class="prose"><%= announcement.body %></div>
+				</div>
+		<% end %> 
+		<%# Next Meeting Quick View %>
+		<% if next_meeting = next_meeting_for_user(current_user) %>
+				<div class="bg-[#631919] text-white shadow rounded-lg p-6">
+						<h2 class="font-serif text-xl mb-4">Next Meeting</h2>
+						<div class="space-y-2">
+								<div class="text-lg font-medium">
+										<%= next_meeting.group.name %>
+								</div>
+								<div class="text-white/80">
+										<%= format_meeting_date(next_meeting.date) %>
+										at <%= format_meeting_time(next_meeting.date) %>
+								</div>
+								<% if next_meeting.location %>
+										<div class="text-white/80">
+												<%= next_meeting.location.address %>
+										</div>
+								<% end %>
+						</div>
+				</div>
+		<% end %>
 
-    <%# Next Meeting Quick View %>
-    <% if next_meeting = next_meeting_for_user(current_user) %>
-      <div class="bg-[#631919] text-white shadow rounded-lg p-6">
-        <h2 class="font-serif text-xl mb-4">Next Meeting</h2>
-        <div class="space-y-2">
-          <div class="text-lg font-medium">
-            <%= next_meeting.group.name %>
-          </div>
-          <div class="text-white/80">
-            <%= format_meeting_date(next_meeting.date) %>
-            at <%= format_meeting_time(next_meeting.date) %>
-          </div>
-          <% if next_meeting.location %>
-            <div class="text-white/80">
-              <%= next_meeting.location.address %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+		<div class="grid gap-6">
+				<%# Groups Section %>
+				<div class="bg-white shadow rounded-lg p-6">
+						<h2 class="font-serif text-xl mb-4">Your Groups</h2>
+						<% if current_user.groups.any? %>
+								<% current_user.groups.each do |group| %>
+										<div class="border-b py-4 space-y-3">
+												<h3 class="font-sans text-lg"><%= group.name %></h3>
+												
+												<%# Upcoming Meetings %>
+												<% if group.upcoming_meetings.any? %>
+														<div class="pl-4 border-l-4 border-[#631919]">
+																<h4 class="text-sm font-medium text-gray-500 mb-2">Upcoming Meetings</h4>
+																<div class="space-y-2">
+																		<% group.upcoming_meetings.each do |meeting| %>
+																				<div class="flex items-center justify-between">
+																						<div class="flex items-center space-x-3">
+																								<div class="text-sm">
+																										<%= format_meeting_date(meeting.date) %>
+																										<span class="text-gray-500">
+																												at <%= format_meeting_time(meeting.date) %>
+																										</span>
+																								</div>
+																						</div>
+																						<% if meeting.location %>
+																								<div class="text-sm text-gray-500">
+																										<%= meeting.location.address %>
+																								</div>
+																						<% end %>
+																				</div>
+																		<% end %>
+																</div>
+														</div>
+												<% else %>
+														<p class="text-sm text-gray-500">No upcoming meetings scheduled</p>
+												<% end %>
+										</div>
+								<% end %>
+						<% else %>
+								<p class="text-gray-500">You haven't joined any groups yet.</p>
+						<% end %>
+				</div>
+
+		</div>
 </div>

@@ -1,6 +1,6 @@
 class Meeting < ApplicationRecord
   belongs_to :group
-  has_one :location
+  has_one :location, dependent: :destroy
   def self.ransackable_associations(auth_object = nil)
     [ "group", "location" ]
   end

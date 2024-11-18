@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_16_181558) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_18_175422) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -23,6 +23,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_16_181558) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "group_memberships", force: :cascade do |t|

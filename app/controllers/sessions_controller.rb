@@ -9,13 +9,13 @@ class SessionsController < ApplicationController
   # app/controllers/sessions_controller.rb
   def create
     email = session[:email] || params[:email]
-  
+
     if valid_email?(email)
       session[:email] = email  # Store email if not already stored
       otp = generate_otp
       store_otp_for_email(email, otp)
       UserMailer.otp_email(email, otp).deliver_later
-    
+
       redirect_to validate_session_path
     else
       flash.now[:error] = "Please enter a valid email address"

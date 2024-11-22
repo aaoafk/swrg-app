@@ -89,6 +89,7 @@ builder:
   # secrets:
   #   - GITHUB_TOKEN
   #   - RAILS_MASTER_KEY
+  context: .
 
 # Use a different ssh user than root
 ssh:

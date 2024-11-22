@@ -7,7 +7,7 @@ image: sfern/swrg_app
 # Deploy to these servers.
 servers:
   web:
-    - AWS_EC2_INSTANCE_IP
+    - <%= `aws ec2 describe-instances | jq '.. | .PublicIp? // empty' | sort -u | tr -d '"'` %>
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -88,8 +88,10 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: ubuntu
+  keys_only: true
+  keys: [ "~/.ssh/swrg-app-ssh-key.pem"]
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
@@ -114,3 +116,11 @@ builder:
 #     port: 6379
 #     directories:
 #       - data:/data
+logging:
+  driver: awslogs
+  options:
+    awslogs-region: us-east-2
+    awslogs-group: /sfern-swrgapp
+    awslogs-create-group: true
+    awslogs-datetime-format: '\[%b %d, %Y %H:%M:%S\]'
+    tag: "{{.Name}}-{{.ID}}"

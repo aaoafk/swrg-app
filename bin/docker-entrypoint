@@ -7,6 +7,10 @@ if [ -z "${LD_PRELOAD+x}" ]; then
 fi
 
 # If running the rails server then create or migrate existing database
+# If the database exists but the tables have not been created, the command
+# will load the schema, run any pending migrations, dump the updated schema
+# and finally load the seed data
+# If the database and tables exist, the command will do nothing
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
 fi

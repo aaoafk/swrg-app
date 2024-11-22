@@ -1,0 +1,152 @@
+{
+    "Reservations": [
+        {
+            "ReservationId": "r-0a686e6550cf990c1",
+            "OwnerId": "390844739459",
+            "Groups": [],
+            "Instances": [
+                {
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda1",
+                            "Ebs": {
+                                "AttachTime": "2024-11-21T18:57:06+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-0b9ef89e3140bd4f5"
+                            }
+                        }
+                    ],
+                    "ClientToken": "86b054c2-f2dd-4d14-a913-e87ba0399f26",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-3-17-74-192.us-east-2.compute.amazonaws.com",
+                                "PublicIp": "3.17.74.192"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2024-11-21T18:57:05+00:00",
+                                "AttachmentId": "eni-attach-0e72d2b28e785ae33",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-0eff586bd44ec5dae",
+                                    "GroupName": "launch-wizard-1"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "02:89:b0:ba:29:97",
+                            "NetworkInterfaceId": "eni-005d9f9adba95eb7b",
+                            "OwnerId": "390844739459",
+                            "PrivateDnsName": "ip-172-31-8-253.us-east-2.compute.internal",
+                            "PrivateIpAddress": "172.31.8.253",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-3-17-74-192.us-east-2.compute.amazonaws.com",
+                                        "PublicIp": "3.17.74.192"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-172-31-8-253.us-east-2.compute.internal",
+                                    "PrivateIpAddress": "172.31.8.253"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-0d539d55613979809",
+                            "VpcId": "vpc-00b4fa95c5589880a",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/sda1",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-0eff586bd44ec5dae",
+                            "GroupName": "launch-wizard-1"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "swrg-prod-app-1"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 1
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "required",
+                        "HttpPutResponseHopLimit": 2,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "BootMode": "uefi-preferred",
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2024-11-21T18:57:05+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": true,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    },
+                    "CurrentInstanceBootMode": "legacy-bios",
+                    "InstanceId": "i-0efcca3109dd64ff8",
+                    "ImageId": "ami-0ea3c35c5c3284d82",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "PrivateDnsName": "ip-172-31-8-253.us-east-2.compute.internal",
+                    "PublicDnsName": "ec2-3-17-74-192.us-east-2.compute.amazonaws.com",
+                    "StateTransitionReason": "",
+                    "KeyName": "swrg-app-ssh-key",
+                    "AmiLaunchIndex": 0,
+                    "ProductCodes": [],
+                    "InstanceType": "t2.micro",
+                    "LaunchTime": "2024-11-21T18:57:05+00:00",
+                    "Placement": {
+                        "GroupName": "",
+                        "Tenancy": "default",
+                        "AvailabilityZone": "us-east-2a"
+                    },
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "SubnetId": "subnet-0d539d55613979809",
+                    "VpcId": "vpc-00b4fa95c5589880a",
+                    "PrivateIpAddress": "172.31.8.253",
+                    "PublicIpAddress": "3.17.74.192"
+                }
+            ]
+        }
+    ]
+}

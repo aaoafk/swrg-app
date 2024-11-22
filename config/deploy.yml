@@ -2,7 +2,9 @@
 service: swrg_app
 
 # Name of the container image.
-image: sfern/swrg_app:latest
+image: sfern/swrg_app
+labels:
+  step: "latest"
 
 # Deploy to these servers.
 servers:
@@ -31,6 +33,7 @@ registry:
   password:
     - AWS_ECR_REGISTRY_PASSWORD
 
+  
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
   secret:

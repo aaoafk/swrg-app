@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby file: ".ruby-version"
+ruby "3.3.5"
 
 # Use specific branch of Rails
 gem "rails", github: "rails/rails", branch: "8-0-stable"

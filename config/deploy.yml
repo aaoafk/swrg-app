@@ -125,7 +125,7 @@ ssh:
 logging:
   driver: awslogs
   options:
-    awslogs-region: us-east-2
+    awslogs-endpoint: 'logs.us-east-2.amazonaws.com'
     awslogs-group: /swrg-app
     awslogs-create-group: true
     awslogs-stream: swrg-app-stream

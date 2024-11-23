@@ -39,6 +39,7 @@ env:
     - AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY
     - AWS_DEFAULT_REGION
+    - AWS_SESSION_TOKEN
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
@@ -127,5 +128,7 @@ logging:
     awslogs-region: us-east-2
     awslogs-group: /swrg-app
     awslogs-create-group: true
+    awslogs-stream: swrg-app-stream
+    awslogs-create-stream: true
     awslogs-datetime-format: '\[%b %d, %Y %H:%M:%S\]'
     tag: "{{.Name}}-{{.ID}}"

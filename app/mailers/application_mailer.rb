@@ -1,6 +1,6 @@
 # app/mailers/application_mailer.rb
 class ApplicationMailer < ActionMailer::Base
-  default from: "swrg-app@gmail.com"
+  default from: "swarthmorereadinggroup@gmail.com"
   layout "mailer"
 
   # This will retry failed emails up to 3 times

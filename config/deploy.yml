@@ -69,8 +69,13 @@ aliases:
 
 # Use a persistent storage volume for sqlite database files and local Active Storage files.
 # Recommended to change this to a mounted volume path that is backed up off server.
+directories:
+  - "/storage/db"
+  - "/storage/misc"
+
 volumes:
-  - "swrg_app_storage:/rails/storage"
+  - "swrg_app_storage:/storage/misc"
+  - "swrg_app_data:/storage/db"
 
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid

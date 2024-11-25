@@ -62,7 +62,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     user_name: Rails.application.credentials.dig(:smtp, :user_name),
     password: Rails.application.credentials.dig(:smtp, :password),
-    address: "email-smtp.us-east-2.amazonaws.com",
+    address: "smtp.gmail.com",
     port: 587,
     authentication: :plain
   }

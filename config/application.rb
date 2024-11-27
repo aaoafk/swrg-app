@@ -38,8 +38,5 @@ module SwrgApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    # Set the base controller to secure admin route
-    config.mission_control.jobs.base_controller_class = "AdminMissionController"
   end
 end

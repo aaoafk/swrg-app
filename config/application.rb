@@ -38,7 +38,8 @@ module SwrgApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    # Add this to see what paths Propshaft is checking
-    config.mission_control.jobs.base_controller_class = "MissionControlController"
+
+    # Set the base controller to secure admin route
+    config.mission_control.jobs.base_controller_class = "AdminMissionController"
   end
 end

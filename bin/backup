@@ -1,8 +1,9 @@
 #!/bin/bash
 
-CONTAINER_NAME=$(docker ps --latest --quiet --filter label=service=swrg_app --filter label=role=web --filter status=running --filter status=restarting --filter ancestor=$(docker image ls --filter reference=390844739459.dkr.ecr.us-east-2.amazonaws.com/sfern/swrg-app:latest --format '{{.ID}}'))
+ANCESTOR=$(ssh -i ~/.ssh/swrg-app-ssh-key.pem ubuntu@3.12.167.223 "docker image ls --filter reference=390844739459.dkr.ecr.us-east-2.amazonaws.com/sfern/swrg-app:latest --format '{{.ID}}'")
+CONTAINER_NAME=$(ssh -i ~/.ssh/swrg-app-ssh-key.pem ubuntu@3.12.167.223 "docker ps --latest --quiet --filter label=service=swrg_app --filter label=role=web --filter status=running --filter status=restarting --filter ancestor=$ANCESTOR")
 DB_PATH="/rails/storage/production.sqlite3"
-BACKUP_DIR="/path/to/local/backups"
+BACKUP_DIR="/backups"
 S3_BUCKET="swrg-app-prod-backups"
 
 # Create SQLite backup

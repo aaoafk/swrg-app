@@ -18,8 +18,6 @@ servers:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy: false
-  # ssl: false
-  # host: ec2-3-17-74-192.us-east-2.compute.amazonaws.com
 
 # Credentials for your image host.
 registry:
@@ -72,6 +70,7 @@ aliases:
 
 volumes:
   - "swrg_app_storage:/rails/storage/"
+  - "swrg_app_backups:/backups"
 
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid

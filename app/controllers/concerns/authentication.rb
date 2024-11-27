@@ -49,9 +49,9 @@ module Authentication
   def request_authentication
     session[:return_to_after_authenticating] = if current_user&.onboarded?
                                                  request.url
-                                               else
+    else
                                                  app_onboarding_root_path
-                                               end
+    end
 
     redirect_to new_session_path
   end

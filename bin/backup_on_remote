@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+AWS_ECR_REPOSITORY=$(aws ecr describe-repositories | jq -r '.repositories | map(select(.repositoryName == "sfern/swrg-app")) | .[0] | .repositoryUri' | cut -d/ -f1)
+
+ANCESTOR=$(docker image ls --filter reference=$AWS_ECR_REPOSITORY --format '{{.ID}}')
+
+CONTAINER_NAME=$(docker ps --latest --quiet --filter label=service=swrg_app --filter label=role=web --filter status=running --filter status=restarting --filter ancestor=$ANCESTOR)
+
+DB_PATH="/storage/production.sqlite3"
+
+BACKUP_DIR="/home/ubuntu/backups"
+
+S3_BUCKET_URI=$(aws ssm get-parameter --name "S3_BUCKET_URI" --query "Parameter.Value" --output text)
+
+# Create SQLite backup using docker exec
+docker exec $CONTAINER_NAME "sqlite3 storage/production.sqlite3 '.backup storage/backup.sqlite3'"
+
+# Copy from container to host
+docker cp $CONTAINER_NAME:/rails/storage/backup.sqlite3 $BACKUP_DIR/backup-$(date +%Y%m%d-%H%M%S).sqlite3
+
+# Backup to S3
+aws s3 cp /home/ubuntu/backups/backup-*.sqlite3 $S3_BUCKET_URI
+
+# Cleanup old backups (keep last 7 days)
+find $BACKUP_DIR -name "backup-*.sqlite3" -mtime +7 -delete

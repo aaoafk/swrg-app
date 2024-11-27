@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
+  mount MissionControl::Jobs::Engine, at: "/jobs"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -8,5 +8,5 @@ class AdminMissionController < ActionController::Base
     )
   else
     Rails.logger.info "mission_control credentials are not defined"
-  end 
+  end
 end

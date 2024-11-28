@@ -125,6 +125,6 @@ logging:
     awslogs-group: /swrg-app
     awslogs-create-group: true
     awslogs-stream: swrg-app-stream
-    # awslogs-create-stream: true
+    awslogs-create-stream: true
     awslogs-datetime-format: '\[%b %d, %Y %H:%M:%S\]'
     tag: "{{.Name}}-{{.ID}}"

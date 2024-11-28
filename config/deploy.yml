@@ -118,13 +118,13 @@ ssh:
 #     port: 6379
 #     directories:
 #       - data:/data
-# logging:
-#   driver: awslogs
-#   options:
-#     awslogs-endpoint: 'logs.us-east-2.amazonaws.com'
-#     awslogs-group: /swrg-app
-#     awslogs-create-group: true
-#     awslogs-stream: swrg-app-stream
-#     # awslogs-create-stream: true
-#     awslogs-datetime-format: '\[%b %d, %Y %H:%M:%S\]'
-#     tag: "{{.Name}}-{{.ID}}"
+logging:
+  driver: awslogs
+  options:
+    awslogs-endpoint: 'logs.us-east-2.amazonaws.com'
+    awslogs-group: /swrg-app
+    awslogs-create-group: true
+    awslogs-stream: swrg-app-stream
+    # awslogs-create-stream: true
+    awslogs-datetime-format: '\[%b %d, %Y %H:%M:%S\]'
+    tag: "{{.Name}}-{{.ID}}"

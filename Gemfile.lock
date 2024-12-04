@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 17fe84c5b8252d572bf4e1e9944c9b9a73eee960
+  revision: 0a7bbeb8bf1dd16ec2ff03b6e12b5802a769e21b
   branch: 8-0-stable
   specs:
     actioncable (8.0.0)
@@ -133,7 +133,7 @@ GEM
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
-    date (3.4.0)
+    date (3.4.1)
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)

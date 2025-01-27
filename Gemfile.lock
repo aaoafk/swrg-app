@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: da50670b2ec3cc38f60e4fdb7a2cbaf496120ef3
+  revision: 893ff50725208def4b4968a31c8fb45299f91b1e
   branch: 8-0-stable
   specs:
     actioncable (8.0.1)
@@ -119,15 +119,15 @@ GEM
     bcrypt_pbkdf (1.1.1-arm64-darwin)
     bcrypt_pbkdf (1.1.1-x86_64-darwin)
     benchmark (0.4.0)
-    bigdecimal (3.1.8)
+    bigdecimal (3.1.9)
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     brakeman (6.2.2)
       racc
     builder (3.3.0)
-    concurrent-ruby (1.3.4)
-    connection_pool (2.4.1)
+    concurrent-ruby (1.3.5)
+    connection_pool (2.5.0)
     crass (1.0.6)
     csv (3.3.0)
     dartsass-rails (0.5.1)
@@ -174,7 +174,7 @@ GEM
     has_scope (0.8.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
@@ -186,7 +186,8 @@ GEM
       railties (>= 6.0)
       responders (>= 2)
     io-console (0.8.0)
-    irb (1.14.3)
+    irb (1.15.1)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jquery-rails (4.6.0)
@@ -218,8 +219,8 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
-    logger (1.6.4)
-    loofah (2.23.1)
+    logger (1.6.5)
+    loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -229,6 +230,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.8)
     minitest (5.25.4)
     mission_control-jobs (1.0.1)
       actioncable (>= 7.1)
@@ -241,7 +243,7 @@ GEM
       stimulus-rails
       turbo-rails
     msgpack (1.7.5)
-    net-imap (0.5.4)
+    net-imap (0.5.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -256,29 +258,39 @@ GEM
       net-protocol
     net-ssh (7.3.0)
     nio4r (2.7.4)
-    nokogiri (1.17.2-aarch64-linux)
+    nokogiri (1.18.2)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.17.2-arm-linux)
+    nokogiri (1.18.2-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.17.2-arm64-darwin)
+    nokogiri (1.18.2-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.17.2-x86-linux)
+    nokogiri (1.18.2-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-darwin)
+    nokogiri (1.18.2-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-linux)
+    nokogiri (1.18.2-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.2-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.2-x86_64-linux-musl)
       racc (~> 1.4)
     ostruct (0.6.1)
     parallel (1.26.3)
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    psych (5.2.2)
+    psych (5.2.3)
       date
       stringio
     puma (6.5.0)
@@ -286,9 +298,10 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.8)
-    rack-session (2.0.0)
+    rack-session (2.1.0)
+      base64 (>= 0.1.0)
       rack (>= 3.0.0)
-    rack-test (2.1.0)
+    rack-test (2.2.0)
       rack (>= 1.3)
     rackup (2.2.1)
       rack (>= 3)
@@ -305,7 +318,7 @@ GEM
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
-    rdoc (6.10.0)
+    rdoc (6.11.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
     reline (0.6.0)
@@ -425,7 +438,8 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    websocket-driver (0.7.6)
+    websocket-driver (0.7.7)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.7.1)
